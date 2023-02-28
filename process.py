@@ -372,7 +372,7 @@ def train_test(data_path,DDGEP_path):
 
     predict_data[:, :, 0:2] = abStandardize(predict_data[:, :, 0:2], lat_lon_mean, lat_lon_std)
     predict_data = predict_data.detach().numpy()
-    test_label = row_data[84310:, 20:27, 8:10]
+    test_label = row_data[84310:, 20:27, 7:9]
 
     epoch_GD_test_loss = GD(test_label, predict_data)
 
@@ -380,6 +380,6 @@ def train_test(data_path,DDGEP_path):
     print('epoch_GD_test_loss_{}:', epoch_GD_test_loss)
 
     # save
-    np.save('perdict_data.npy', predict_data[:, :, 0:2])
-    np.save('test_data.npy', row_data[84310:, 0:20, 8:10])
-    np.save('test_label.npy', row_data[84310:, 20:27, 8:10])
+    np.save('predict_data.npy', predict_data[:, :, 0:2])
+    np.save('test_data.npy', row_data[84310:, 0:20, 7:9])
+    np.save('test_label.npy', row_data[84310:, 20:27, 7:9])
